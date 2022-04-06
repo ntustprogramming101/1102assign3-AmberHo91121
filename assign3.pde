@@ -1,7 +1,8 @@
-//0407 0321
+//0407 0340
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
+int yMove;
 
 PImage Health;
 int HealthX= 10;
@@ -116,11 +117,13 @@ void draw() {
    
     //to the new canvas
       pushMatrix();
-        if(level>-1||level<20){
-        translate(0,-block*level);//to the new center
-        }else{
-          translate(0,-block*20);
+        if(level<20){
+        yMove=(-block*level);
         }
+        if(level>19){
+        yMove=(-block*20);
+        }
+        translate(0,yMove);
       
     // Grass
     fill(124, 204, 25);
