@@ -8,7 +8,7 @@ float newHealthX;
 float HealthY= 10;
 float HealthPlus= 70;
 
-//the doesn't move groundhog rrrrrrrrr
+//groundhog
 PImage groundhogImg;
 float groundhogX = 4*block;
 float groundhogY = block;  
@@ -198,7 +198,7 @@ void draw() {
       }
 
 
-    /////////////////////////////////////////////////////////////////////////// Player
+    // Player
     //Draw hog
     switch(hogStat){
     case GR_NORM:
@@ -254,7 +254,7 @@ void draw() {
       
       popMatrix();
     
-   ///////////////////////////////////////////////////////////////////////////// Health UI
+   // Health UI
    for(int i = 0; i< playerHealth; i++){
       image(Health,HealthX+HealthPlus*i, HealthY);
       }  
