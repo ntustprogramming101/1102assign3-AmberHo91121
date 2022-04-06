@@ -38,6 +38,20 @@ boolean downPressed = false;
 boolean rightPressed = false;
 boolean leftPressed = false;
 
+//extra cabbage
+  //badcabbage;(
+  float cabbageRandomX;
+  float cabbageRandomY;
+  float cabfinalX;
+  float cabfinalY;
+//extra soldier
+  PImage soldierImg;
+  float soldierRandomX;
+  float soldierRandomY;
+  float soldierSpeedX;//soldierSpeed
+  float xSoldier;
+  float ySoldier;//soldier//soldierPlace
+
 // For debug function; DO NOT edit or remove this!
 int playerHealth = 2;
 float cameraOffsetY = 0;
