@@ -116,10 +116,9 @@ void draw() {
    
     //to the new canvas
       pushMatrix();
-        if(block*level<block*20){
         translate(0,-block*level);//to the new center
-        }else{
-        translate(0,-block*20);//to the new center
+        if(level>20){
+          level=20;
         }
       
     // Grass
@@ -192,7 +191,7 @@ void draw() {
           image(soil0, 0+block*ix, 160+block*level);
           for(int one=0; one<8; one++){
             //18stone
-          //  image(stone1, block*one, 160+block*one);
+            image(stone1, block*one, 160+block*one);
           }
         }
       }
