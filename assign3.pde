@@ -1,3 +1,20 @@
+$ phpcs /path/to/code/myfile.php
+
+FILE: /path/to/code/myfile.php
+--------------------------------------------------------------------------------
+FOUND 5 ERRORS AFFECTING 4 LINES
+--------------------------------------------------------------------------------
+ 2 | ERROR | [ ] Missing file doc comment
+ 3 | ERROR | [x] TRUE, FALSE and NULL must be lowercase; expected "false" but
+   |       |     found "FALSE"
+ 5 | ERROR | [x] Line indented incorrectly; expected at least 4 spaces, found 1
+ 8 | ERROR | [ ] Missing function doc comment
+ 8 | ERROR | [ ] Opening brace should be on a new line
+--------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------
+
+
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
