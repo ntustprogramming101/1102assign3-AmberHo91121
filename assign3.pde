@@ -143,21 +143,26 @@ void draw() {
     rect(0, 160 - GRASS_HEIGHT, width, GRASS_HEIGHT);
 
     // Soil - REPLACE THIS PART WITH YOUR LOOP CODE!
-    for(int ix=0; ix<8 ;ix++){
+    for(int ix=0; ix<8 ;ix++){      
       for(int level=0; level<24 ;level++){
-      if (level<4){
-      image(soil0, 0+block*ix, 160+block*level);
-      if (level>=4 && level<8){
-      image(soil1, 0+block*ix, 160+block*level);
-      if (level>=8&&level<12){
-      image(soil2, 0+block*ix, 160+block*level);
-      if (level>=12&&level<16){
-      image(soil3, 0+block*ix, 160+block*level);
-      if (level>=16&&level<20){
-      image(soil4, 0+block*ix, 160+block*level);
-      if (level>=20&&level<24){
-      image(soil5, 0+block*ix, 160+block*level);
-      }}}}}}}}
+          image(soil5, 0+block*ix, 160+block*level);
+        }
+      for(int level=0; level<20 ;level++){
+          image(soil4, 0+block*ix, 160+block*level);
+        }
+      for(int level=0; level<16 ;level++){
+          image(soil3, 0+block*ix, 160+block*level);
+        }
+      for(int level=0; level<12 ;level++){
+          image(soil2, 0+block*ix, 160+block*level);
+        }
+      for(int level=0; level<8 ;level++){
+          image(soil1, 0+block*ix, 160+block*level);
+        }
+      for(int level=0; level<4 ;level++){
+          image(soil0, 0+block*ix, 160+block*level);
+        }
+      }
 
 
     // Player
