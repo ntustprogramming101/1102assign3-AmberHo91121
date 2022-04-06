@@ -1,4 +1,4 @@
-//0407 0247
+//0407 01316
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
@@ -116,9 +116,10 @@ void draw() {
    
     //to the new canvas
       pushMatrix();
+        if(level<20){
         translate(0,-block*level);//to the new center
-        if(level>20){
-          level=20;
+        }else{
+          translate(0,-block*20);
         }
       
     // Grass
