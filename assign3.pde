@@ -119,7 +119,7 @@ void draw() {
 
     case GAME_RUN: // In-Game
     
-    println(level);
+    println(key);
 
     // Background
     image(bg, 0, 0);
@@ -290,6 +290,8 @@ void draw() {
       if(mousePressed){
         gameState = GAME_RUN;
         playerHealth= 2;
+        translate(0,-block*level);
+        level=0;
         mousePressed = false;
         // Remember to initialize the game here!
       }
