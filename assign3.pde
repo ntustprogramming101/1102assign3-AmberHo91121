@@ -1,4 +1,4 @@
-//0407 0113
+//0407 0247
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
