@@ -9,7 +9,6 @@ float lifeX= 10;
 float newLifeX;
 float lifeY= 10;
 float lifePlus= 35;
-float lifeCount = 2;
 
 //badcabbage;(
 PImage cabbage;
@@ -47,13 +46,14 @@ final int START_BUTTON_Y = 360;
 PImage title, gameover, startNormal, startHovered, restartNormal, restartHovered;
 PImage bg, soil0, soil1,soil2,soil3,soil4,soil5;
 PImage stone1,stone2;
+float level=0;
 
 boolean downPressed = false;
 boolean rightPressed = false;
 boolean leftPressed = false;
 
 // For debug function; DO NOT edit or remove this!
-int playerHealth = 0;
+int playerHealth = 3;
 float cameraOffsetY = 0;
 boolean debugMode = false;
 
@@ -144,29 +144,21 @@ void draw() {
 
     // Soil - REPLACE THIS PART WITH YOUR LOOP CODE!
     for(int ix=0; ix<8 ;ix++){
-      if (ix<4){
-      image(soil0, 0+block*ix, 160);
-      if (ix>4 && ix<8){
-      image(soil1, 0+block*ix, 160);
-      if (ix>8&&ix<12){
-      image(soil2, 0+block*ix, 160);
-      if (ix>12&&ix<16){
-      image(soil3, 0+block*ix, 160);
-      if (ix>16&&ix<20){
-      image(soil4, 0+block*ix, 160);
-      if (ix>20&&ix<24){
-      image(soil5, 0+block*ix, 160);
-                }
-              }
-            }
-          }
-        }
-      }
-      
-      for(int iy=0; iy<24 ;iy++){
-      image(soil1, 0+block*ix, 160+block*iy);
-    }
-    }
+      for(int level=0; level<24 ;level++){
+      if (level<4){
+      image(soil0, 0+block*ix, 160+block*level);
+      if (level>=4 && level<8){
+      image(soil1, 0+block*ix, 160+block*level);
+      if (level>=8&&level<12){
+      image(soil2, 0+block*ix, 160+block*level);
+      if (level>=12&&level<16){
+      image(soil3, 0+block*ix, 160+block*level);
+      if (level>=16&&level<20){
+      image(soil4, 0+block*ix, 160+block*level);
+      if (level>=20&&level<24){
+      image(soil5, 0+block*ix, 160+block*level);
+      }}}}}}}}
+
 
     // Player
 /////////////////////////////boundary detection
@@ -228,12 +220,12 @@ void draw() {
     xSoldier %=640;   
     
    // Health UI
-   for(int i = 0; i< lifeCount; i++){
+   for(int i = 0; i< playerHealth; i++){
       pushMatrix();
       translate(lifeX+lifePlus*i,lifeY);//to the new center
       image(life,lifeX+lifePlus*i, lifeY);
-      if(lifeCount>5){
-      lifeCount=5;
+      if(playerHealth>5){
+      playerHealth=5;
       }
       popMatrix();
       }  
@@ -245,8 +237,9 @@ void draw() {
       groundhogY+block > ySoldier){
       groundhogX = 4*block;
       groundhogY = block;
-      lifeCount -= 1;
-      if (lifeCount < 1){
+      playerHealth --;
+      level=0;
+      if (playerHealth < 1){
       gameState = GAME_OVER;
        }
      }
@@ -261,9 +254,9 @@ void draw() {
        && groundhogY >= cabfinalY && groundhogY + block <= cabfinalY +block){
        cabbageRandomX = -10;
        cabbageRandomY = -10;
-      lifeCount += 1;            
-        if (lifeCount > 5){
-        lifeCount = 5;
+      playerHealth ++;            
+        if (playerHealth > 5){
+        playerHealth = 5;
 
      }
  }       
@@ -281,7 +274,7 @@ void draw() {
       image(restartHovered, START_BUTTON_X, START_BUTTON_Y);
       if(mousePressed){
         gameState = GAME_RUN;
-        lifeCount=2;
+        playerHealth=3;
         cabbageRandomX = floor(random(7));
         cabbageRandomY = floor(random(4));
         soldierRandomX = floor(random(6));
@@ -315,6 +308,7 @@ void keyPressed(){
           hogStat=GR_DOWN;
           translate(0, cameraOffsetY);
           timer=0;
+          level++;
         }
         break;
       case RIGHT:
