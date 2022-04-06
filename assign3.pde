@@ -4,18 +4,11 @@ int block = 80;
 float grX=0;
 float grY=160;
 
-PImage life;
-float lifeX= 10;
-float newLifeX;
-float lifeY= 10;
-float lifePlus= 35;
-
-//badcabbage;(
-PImage cabbage;
-float cabbageRandomX;
-float cabbageRandomY;
-float cabfinalX;
-float cabfinalY;
+PImage Health;
+float HealthX= 10;
+float newHealthX;
+float HealthY= 10;
+float HealthPlus= 70;
 
 //the doesn't move groundhog rrrrrrrrr
 PImage groundhogImg;
@@ -29,13 +22,6 @@ PImage leftImg;
 int hogStat;
 int timer;
 final int GR_NORM=0, GR_DOWN=1, GR_RIGHT=2, GR_LEFT=3;
-
-PImage soldierImg;
-float soldierRandomX;
-float soldierRandomY;
-float soldierSpeedX;//soldierSpeed
-float xSoldier;
-float ySoldier;//soldier//soldierPlace
   
 final int GRASS_HEIGHT = 15;
 final int START_BUTTON_W = 144;
@@ -53,7 +39,7 @@ boolean rightPressed = false;
 boolean leftPressed = false;
 
 // For debug function; DO NOT edit or remove this!
-int playerHealth = 3;
+int playerHealth = 2;
 float cameraOffsetY = 0;
 boolean debugMode = false;
 
@@ -62,8 +48,7 @@ void setup() {
   // Enter your setup code here (please put loadImage() here or your game will lag like crazy)
   bg = loadImage("img/bg.jpg");
   groundhogImg = loadImage("img/groundhogIdle.png");
-  life = loadImage("img/life.png");
-  soldierImg = loadImage("img/soldier.png");
+  Health = loadImage("img/life.png");
   gameover = loadImage("img/gameover.jpg");
   downImg= loadImage("img/groundhogDown.png");
   rightImg= loadImage("img/groundhogRight.png");
@@ -73,7 +58,6 @@ void setup() {
   restartNormal= loadImage("img/restartNormal.png");
   startNormal= loadImage("img/startNormal.png");
   title= loadImage("img/title.jpg");
-  cabbage= loadImage("img/cabbage.png");
   soil0 = loadImage("img/soil0.png");
   soil1 = loadImage("img/soil1.png");
   soil2 = loadImage("img/soil2.png");
@@ -82,13 +66,6 @@ void setup() {
   soil5 = loadImage("img/soil5.png");
   stone1 = loadImage("img/stone1.png");
   stone2 = loadImage("img/stone2.png");
-  
-  cabbageRandomX = floor(random(7));
-  cabbageRandomY = floor(random(4));
-  soldierRandomX = floor(random(6));
-  soldierRandomY = floor(random(4));
-  xSoldier = soldierRandomX*80;
-  ySoldier = 160+soldierRandomY*80;//soldierMovement
 }
 
 void draw() {
@@ -140,7 +117,7 @@ void draw() {
     //to the new canvas
       pushMatrix();
       if (groundhogY>block){
-        translate(0,-block*level);//to the new center
+        translate(0,-block);//to the new center
         }
       
     // Grass
@@ -226,54 +203,11 @@ void draw() {
       //println(hogY);
       timer=0;
    }
-    //soldier moves
-    soldierRandomX = floor(random(7));
-    soldierRandomY = floor(random(4));
-    image(soldierImg , xSoldier , ySoldier);
-    xSoldier = xSoldier+5;
-    xSoldier %=640;   
     
    // Health UI
    for(int i = 0; i< playerHealth; i++){
-      pushMatrix();
-      translate(lifeX+lifePlus*i,lifeY);//to the new center
-      image(life,lifeX+lifePlus*i, lifeY);
-      if(playerHealth>5){
-      playerHealth=5;
-      }
-      popMatrix();
+      image(Health,HealthX+HealthPlus*i, HealthY);
       }  
-                     
-    //soldier and groundhog touch detection
-    if(groundhogX < xSoldier+block &&//hog touch soldier
-      groundhogX+block > xSoldier &&
-      groundhogY < ySoldier+80 &&
-      groundhogY+block > ySoldier){
-      groundhogX = 4*block;
-      groundhogY = block;
-      playerHealth --;
-      level=0;
-      if (playerHealth < 1){
-      gameState = GAME_OVER;
-       }
-     }
-          
-     //where's the cabbage 
-     float cabfinalX = cabbageRandomX*block;
-     float cabfinalY = 2*block+cabbageRandomY*block;
-     image(cabbage , cabfinalX, cabfinalY);
-        
-     //eat the cabbage and recover the heart
-     if(groundhogX >= cabfinalX && groundhogX + block <= cabfinalX +block
-       && groundhogY >= cabfinalY && groundhogY + block <= cabfinalY +block){
-       cabbageRandomX = -10;
-       cabbageRandomY = -10;
-      playerHealth ++;            
-        if (playerHealth > 5){
-        playerHealth = 5;
-
-     }
- }       
      break;
 
 
@@ -289,12 +223,6 @@ void draw() {
       if(mousePressed){
         gameState = GAME_RUN;
         playerHealth=3;
-        cabbageRandomX = floor(random(7));
-        cabbageRandomY = floor(random(4));
-        soldierRandomX = floor(random(6));
-        soldierRandomY = floor(random(4));
-        xSoldier = soldierRandomX*80;
-        ySoldier = 160+soldierRandomY*80;
         mousePressed = false;
         // Remember to initialize the game here!
       }
