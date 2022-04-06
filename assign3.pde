@@ -104,6 +104,8 @@ void draw() {
     break;
 
     case GAME_RUN: // In-Game
+    
+    println(level);
 
     // Background
     image(bg, 0, 0);
@@ -116,8 +118,10 @@ void draw() {
    
     //to the new canvas
       pushMatrix();
-      if (groundhogY>block){
-        translate(0,-block);//to the new center
+        if(block*level<block*20){
+        translate(0,-block*level);//to the new center
+        }else{
+        translate(0,-block*20);//to the new center
         }
       
     // Grass
@@ -148,20 +152,7 @@ void draw() {
       }
 
 
-    // Player
-/////////////////////////////boundary detection
-    if(groundhogY >= height){
-    groundhogY = height-block;
-    }//down boundary
-          
-    if(groundhogX >= width){
-    groundhogX = width-block;
-    }//right boundary
-          
-    if(groundhogX <= 0){
-     groundhogX = 0;
-    } //left boundary
-    
+    /////////////////////////////////////////////////////////////////////////// Player
     //Draw hog
     switch(hogStat){
     case GR_NORM:
@@ -170,21 +161,19 @@ void draw() {
     case GR_DOWN:
       image(downImg,groundhogX,groundhogY);
       timer+=1;
-      groundhogY+=80.0/15;
+      groundhogY+= 80.0/15;
       break;
     case GR_RIGHT:
       image(rightImg,groundhogX,groundhogY);
       timer+=1;
-      groundhogX+=80.0/15;
+      groundhogX+= 80.0/15;
       break;
     case GR_LEFT:
       image(leftImg,groundhogX,groundhogY);
       timer+=1;
-      groundhogX-=80.0/15;
+      groundhogX-= 80.0/15;
       break;
     }
-    
-    popMatrix();
     
     //check timer
     if(timer==15){
@@ -203,11 +192,27 @@ void draw() {
       //println(hogY);
       timer=0;
    }
+   
+      //boundary detection
+      if(groundhogY > height+block*20){
+      groundhogY = height+block*20;
+      }//down boundary
+            
+      if(groundhogX > width){
+      groundhogX = width-block;
+      }//right boundary
+            
+      if(groundhogX < 0){
+       groundhogX = 0;
+      } //left boundary
+      
+      popMatrix();
     
-   // Health UI
+   ///////////////////////////////////////////////////////////////////////////// Health UI
    for(int i = 0; i< playerHealth; i++){
       image(Health,HealthX+HealthPlus*i, HealthY);
       }  
+      
      break;
 
 
@@ -246,7 +251,7 @@ void keyPressed(){
     if(key ==CODED){
     switch(keyCode){
       case DOWN:
-        if(groundhogY+block<height&&hogStat==GR_NORM){
+        if(groundhogY+block<height+block*20&&hogStat==GR_NORM){
           hogStat=GR_DOWN;
           translate(0, cameraOffsetY);
           timer=0;
