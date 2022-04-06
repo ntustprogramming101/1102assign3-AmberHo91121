@@ -1,8 +1,6 @@
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
-float grX=0;
-float grY=160;
 
 PImage Health;
 float HealthX= 10;
@@ -37,20 +35,6 @@ float level=0;
 boolean downPressed = false;
 boolean rightPressed = false;
 boolean leftPressed = false;
-
-//extra cabbage
-  //badcabbage;(
-  float cabbageRandomX;
-  float cabbageRandomY;
-  float cabfinalX;
-  float cabfinalY;
-//extra soldier
-  PImage soldierImg;
-  float soldierRandomX;
-  float soldierRandomY;
-  float soldierSpeedX;//soldierSpeed
-  float xSoldier;
-  float ySoldier;//soldier//soldierPlace
 
 // For debug function; DO NOT edit or remove this!
 int playerHealth = 2;
