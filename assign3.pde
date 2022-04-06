@@ -299,16 +299,16 @@ void draw() {
 
 void keyPressed(){
   // Add your moving input code here
-    if(key ==CODED){
-    switch(keyCode){
-      case DOWN:
-        if(groundhogY+block<height+block*20&&hogStat==GR_NORM){
-          hogStat=GR_DOWN;
-          translate(0, cameraOffsetY);
-          timer=0;
-          level++;
-        }
-        break;
+    if(key == CODED){
+      switch(keyCode){
+        case DOWN:
+          if(groundhogY+block<height+block*20&&hogStat==GR_NORM){
+            hogStat=GR_DOWN;
+            translate(0, cameraOffsetY);
+            timer=0;
+            level++;
+          }
+          break;
       case RIGHT:
         if(groundhogX+block<width&&hogStat==GR_NORM){
           hogStat=GR_RIGHT;
@@ -319,9 +319,10 @@ void keyPressed(){
         if(groundhogX>0&&hogStat==GR_NORM){
           hogStat=GR_LEFT;
           timer=0;
+        }
       break;
+      }
     }
-  }
     
   // DO NOT REMOVE OR EDIT THE FOLLOWING SWITCH/CASES
     switch(key){
@@ -344,7 +345,6 @@ void keyPressed(){
       break;
     }
   }
-}
 
 void keyReleased(){
 }
