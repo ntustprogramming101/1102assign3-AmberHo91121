@@ -136,7 +136,13 @@ void draw() {
       strokeWeight(5);
       fill(253,184,19);
       ellipse(590,50,120,120);
-
+   
+    //to the new canvas
+      pushMatrix();
+      if (groundhogY>block){
+        translate(0,-block*level);//to the new center
+        }
+      
     // Grass
     fill(124, 204, 25);
     noStroke();
@@ -200,6 +206,9 @@ void draw() {
       groundhogX-=80.0/15;
       break;
     }
+    
+    popMatrix();
+    
     //check timer
     if(timer==15){
       hogStat=GR_NORM;
