@@ -139,15 +139,63 @@ void draw() {
         }
       for(int level=0; level<16 ;level++){
           image(soil3, 0+block*ix, 160+block*level);
+          //1724stone
+          for(int three=0; three<8; three++){
+             //18stone1
+             image(stone1, width-block*three, 160+block*16+block*three);
+             image(stone1, width-block*three-block, 160+block*16+block*three);
+             image(stone1, width-block*three-3*block, 160+block*16+block*three);
+             image(stone1, width-block*three-4*block, 160+block*16+block*three);
+             image(stone1, width-block*three-6*block, 160+block*16+block*three);
+             image(stone1, width-block*three-7*block, 160+block*16+block*three);
+             image(stone1, width-block*three+2*block, 160+block*16+block*three);
+             image(stone1, width-block*three+3*block, 160+block*16+block*three);
+             image(stone1, width-block*three+5*block, 160+block*16+block*three);
+             image(stone1, width-block*three+6*block, 160+block*16+block*three);
+             //18stone2
+             image(stone2, width-block*three, 160+block*16+block*three);
+             image(stone2, width-block*three-3*block, 160+block*16+block*three);
+             image(stone2, width-block*three-6*block, 160+block*16+block*three);
+             image(stone2, width-block*three+2*block, 160+block*16+block*three);
+             image(stone2, width-block*three+5*block, 160+block*16+block*three);
+          }
         }
+        
       for(int level=0; level<12 ;level++){
           image(soil2, 0+block*ix, 160+block*level);
+          //916stone
+          image(stone1, block, block*8+160);
+          image(stone1, block*2, block*8+160);
+          image(stone1, block*5, block*8+160);
+          image(stone1, block*6, block*8+160);
+          image(stone1, block*7, block*9+160);
+          image(stone1, block*7, block*10+160);
+            for(int two=0; two<4; two++){
+              image(stone1, block*two*2, 9*block+160+block*two*2);
+              image(stone1, block*two*2-block, 9*block+160+block*two*2);
+              image(stone1, block*two*2+4*block, 9*block+160+block*two*2);
+              image(stone1, block*two*2-block+4*block, 9*block+160+block*two*2);
+              image(stone1, block*two*2-4*block, 9*block+160+block*two*2);
+              image(stone1, block*two*2-block-4*block, 9*block+160+block*two*2);
+                for(int twoone=0; twoone<3; twoone++){
+                  image(stone1, block*twoone*2, 9*block+160+block*twoone*2+block);
+                  image(stone1, block*twoone*2-block, 9*block+160+block*twoone*2+block);
+                  image(stone1, block*twoone*2+4*block, 9*block+160+block*twoone*2+block);
+                  image(stone1, block*twoone*2-block+4*block, 9*block+160+block*twoone*2+block);
+                  image(stone1, block*twoone*2-4*block, 9*block+160+block*twoone*2+block);
+                  image(stone1, block*twoone*2-block-4*block, 9*block+160+block*twoone*2+block);
+            }
+          }
         }
       for(int level=0; level<8 ;level++){
           image(soil1, 0+block*ix, 160+block*level);
         }
       for(int level=0; level<4 ;level++){
           image(soil0, 0+block*ix, 160+block*level);
+          for(int one=0; one<8; one++){
+            //18stone
+            image(stone1, block*one, 160+block*one);
+          }
         }
       }
 
