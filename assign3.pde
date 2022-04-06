@@ -1,3 +1,4 @@
+//0407 0113
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
@@ -191,7 +192,7 @@ void draw() {
           image(soil0, 0+block*ix, 160+block*level);
           for(int one=0; one<8; one++){
             //18stone
-            image(stone1, block*one, 160+block*one);
+          //  image(stone1, block*one, 160+block*one);
           }
         }
       }
