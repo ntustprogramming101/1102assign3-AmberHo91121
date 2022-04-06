@@ -156,8 +156,8 @@ void draw() {
              image(stone2, width-block*three, 160+block*16+block*three);
              image(stone2, width-block*three-3*block, 160+block*16+block*three);
              image(stone2, width-block*three-6*block, 160+block*16+block*three);
-             image(stone2, width-block*three+2*block, 160+block*16+block*three);
-             image(stone2, width-block*three+5*block, 160+block*16+block*three);
+             image(stone2, width-block*three+3*block, 160+block*16+block*three);
+             image(stone2, width-block*three+6*block, 160+block*16+block*three);
           }
         }
         
