@@ -222,7 +222,7 @@ void draw() {
       image(restartHovered, START_BUTTON_X, START_BUTTON_Y);
       if(mousePressed){
         gameState = GAME_RUN;
-        playerHealth=3;
+        playerHealth= 2;
         mousePressed = false;
         // Remember to initialize the game here!
       }
