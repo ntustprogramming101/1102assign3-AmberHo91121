@@ -1,4 +1,4 @@
-//0407 0340
+//0407 054
 final int GAME_START = 0, GAME_RUN = 1, GAME_OVER = 2;
 int gameState = GAME_START;
 int block = 80;
@@ -283,6 +283,8 @@ void draw() {
         playerHealth= 2;
         translate(0,-block*level);
         level=0;
+        groundhogX = 4*block;
+        groundhogY = block; 
         // mousePressed = false;
         // Remember to initialize the game here!
       }
