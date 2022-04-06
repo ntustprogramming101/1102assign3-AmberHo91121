@@ -3,17 +3,17 @@ int gameState = GAME_START;
 int block = 80;
 
 PImage Health;
-float HealthX= 10;
-float newHealthX;
-float HealthY= 10;
-float HealthPlus= 70;
+int HealthX= 10;
+int newHealthX;
+int HealthY= 10;
+int HealthPlus= 70;
 
 //the doesn't move groundhog rrrrrrrrr
 PImage groundhogImg;
-float groundhogX = 4*block;
-float groundhogY = block;  
-float groundhogXPlus;
-float groundhogYPlus;
+int groundhogX = 4*block;
+int groundhogY = block;  
+int groundhogXPlus;
+int groundhogYPlus;
 PImage downImg;
 PImage rightImg;
 PImage leftImg;
@@ -30,7 +30,7 @@ final int START_BUTTON_Y = 360;
 PImage title, gameover, startNormal, startHovered, restartNormal, restartHovered;
 PImage bg, soil0, soil1,soil2,soil3,soil4,soil5;
 PImage stone1,stone2;
-float level=0;
+int level=0;
 
 boolean downPressed = false;
 boolean rightPressed = false;
@@ -64,6 +64,7 @@ void setup() {
   soil5 = loadImage("img/soil5.png");
   stone1 = loadImage("img/stone1.png");
   stone2 = loadImage("img/stone2.png");
+  gameState= 0;
 }
 
 void draw() {
@@ -194,9 +195,7 @@ void draw() {
           }
         }
       }
-
-
-    /////////////////////////////////////////////////////////////////////////// Player
+      
     //Draw hog
     switch(hogStat){
     case GR_NORM:
@@ -218,6 +217,9 @@ void draw() {
       groundhogX-= 80.0/15;
       break;
     }
+      popMatrix();
+
+    /////////////////////////////////////////////////////////////////////////// Player
     
     //check timer
     if(timer==15){
@@ -250,12 +252,15 @@ void draw() {
        groundhogX = 0;
       } //left boundary
       
-      popMatrix();
     
    ///////////////////////////////////////////////////////////////////////////// Health UI
    for(int i = 0; i< playerHealth; i++){
       image(Health,HealthX+HealthPlus*i, HealthY);
       }  
+      
+    if(playerHealth==0){
+      gameState=GAME_OVER;
+    }
       
      break;
 
@@ -274,14 +279,14 @@ void draw() {
         playerHealth= 2;
         translate(0,-block*level);
         level=0;
-        mousePressed = false;
+        // mousePressed = false;
         // Remember to initialize the game here!
       }
     }else{
-
+      
       image(restartNormal, START_BUTTON_X, START_BUTTON_Y);
-
-    }
+   
+  }
     break;
     
   }
@@ -315,7 +320,8 @@ void keyPressed(){
           hogStat=GR_LEFT;
           timer=0;
       break;
-    }}
+    }
+  }
     
   // DO NOT REMOVE OR EDIT THE FOLLOWING SWITCH/CASES
     switch(key){
@@ -337,7 +343,7 @@ void keyPressed(){
       if(playerHealth < 5) playerHealth ++;
       break;
     }
-}
+  }
 }
 
 void keyReleased(){
